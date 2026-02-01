@@ -2,6 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+@app.get("/")
+def home():
+    return {"message": "One Piece API is running! Use /character/{name} to search."}
+
 
 app.add_middleware(
     CORSMiddleware,

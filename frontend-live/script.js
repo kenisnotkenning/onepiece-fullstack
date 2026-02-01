@@ -17,9 +17,13 @@ window.addEventListener("load", revealOnScroll);
 
 // Character search (keep this if you already had search)
 function searchCharacter() {
-  const name = document.getElementById("searchInput").value;
-  fetch(`https://your-python-api.onrender.com/character/${name}`)
-    .then(res => res.json())
+  const name = document.getElementById("searchInput").value.trim();
+
+  fetch(`https://YOUR-REAL-API-URL.onrender.com/character/${name}`)
+    .then(res => {
+      if (!res.ok) throw new Error("Not found");
+      return res.json();
+    })
     .then(data => {
       document.getElementById("result").innerHTML = `
         <div class="result-card">
@@ -33,6 +37,7 @@ function searchCharacter() {
       document.getElementById("result").innerHTML = "<p>Character not found</p>";
     });
 }
+
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
@@ -83,17 +88,17 @@ function animateParticles() {
 
 animateParticles();
 const crewInfo = {
-  Luffy: "Captain of the Straw Hat Pirates. Dreams of becoming King of the Pirates.",
-  Zoro: "Master swordsman who wields three swords.",
-  Sanji: "Cook of the crew who fights with powerful kicks.",
-  Robin: "Archaeologist who can sprout limbs using Devil Fruit powers."
+  "Luffy": "Captain of the Straw Hat Pirates. Dreams of becoming King of the Pirates.",
+  "Zoro": "Master swordsman who wields three swords.",
+  "Sanji": "Cook of the crew who fights with powerful kicks.",
+  "Robin": "Archaeologist who can sprout limbs using Devil Fruit powers."
 };
 
 document.querySelectorAll(".crew-card").forEach(card => {
   card.addEventListener("click", () => {
-    const name = card.querySelector("p").innerText;
-    document.getElementById("modalName").innerText = name;
-    document.getElementById("modalDesc").innerText = crewInfo[name];
+    const name = card.querySelector("p").textContent.trim();
+    document.getElementById("modalName").textContent = name;
+    document.getElementById("modalDesc").textContent = crewInfo[name] || "Straw Hat Pirate";
     document.getElementById("characterModal").style.display = "block";
   });
 });

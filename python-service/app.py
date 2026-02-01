@@ -5,11 +5,32 @@ app = Flask(__name__)
 CORS(app)
 
 characters = {
-    "luffy": {"name": "Monkey D. Luffy", "role": "Captain", "crew": "Straw Hat Pirates"},
-    "zoro": {"name": "Roronoa Zoro", "role": "Swordsman", "crew": "Straw Hat Pirates"},
-    "sanji": {"name": "Sanji", "role": "Cook", "crew": "Straw Hat Pirates"},
-    "robin": {"name": "Nico Robin", "role": "Archaeologist", "crew": "Straw Hat Pirates"}
+    "luffy": {
+        "name": "Monkey D. Luffy",
+        "role": "Captain",
+        "crew": "Straw Hat Pirates",
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/50/Monkey_D._Luffy.png"
+    },
+    "zoro": {
+        "name": "Roronoa Zoro",
+        "role": "Swordsman",
+        "crew": "Straw Hat Pirates",
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/7e/Roronoa_Zoro.png"
+    },
+    "sanji": {
+        "name": "Sanji",
+        "role": "Cook",
+        "crew": "Straw Hat Pirates",
+        "image": "https://upload.wikimedia.org/wikipedia/en/4/4b/Sanji.png"
+    },
+    "robin": {
+        "name": "Nico Robin",
+        "role": "Archaeologist",
+        "crew": "Straw Hat Pirates",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/9a/Nico_Robin.png"
+    }
 }
+
 
 @app.route("/character/<name>")
 def get_character(name):

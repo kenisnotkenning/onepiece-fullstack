@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>One Piece Universe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">🏴‍☠️ One Piece Universe</div>
+    <div class="nav-links">
+      <a href="#crew">Crew</a>
+      <a href="#search">Search</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>The Great Pirate Era</h1>
+    <p>Explore legends of the Grand Line</p>
+  </section>
+
+  <section id="search" class="search-section">
+    <h2>Search Straw Hat Pirates</h2>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Type Luffy, Zoro, Nami...">
+      <button onclick="searchCharacter()">Search</button>
+    </div>
+    <div id="resultBox" class="result-card"></div>
+  </section>
+
+  <section id="crew" class="crew-section">
+    <h2>Main Crew</h2>
+    <div class="crew-grid">
+      <div class="crew-card"><img src="https://i.imgur.com/3ZQ3Z9R.png"><p>Luffy</p></div>
+      <div class="crew-card"><img src="https://i.imgur.com/8Qf6YwC.png"><p>Zoro</p></div>
+      <div class="crew-card"><img src="https://i.imgur.com/MxQp9YB.png"><p>Nami</p></div>
+      <div class="crew-card"><img src="https://i.imgur.com/FK6vK9k.png"><p>Sanji</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Fan-made One Piece Portal • Powered by Java & Python</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

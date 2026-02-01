@@ -25,14 +25,16 @@ function searchCharacter() {
       return res.json();
     })
     .then(data => {
-      document.getElementById("result").innerHTML = `
-        <div class="result-card">
-          <h3>${data.name}</h3>
-          <p>Role: ${data.role}</p>
-          <p>Crew: ${data.crew}</p>
-        </div>
-      `;
-    })
+  document.getElementById("result").innerHTML = `
+    <div class="result-card">
+      <img src="${data.image}" alt="${data.name}" class="result-img">
+      <h3>${data.name}</h3>
+      <p>Role: ${data.role}</p>
+      <p>Crew: ${data.crew}</p>
+    </div>
+  `;
+})
+
     .catch(() => {
       document.getElementById("result").innerHTML = "<p>Character not found</p>";
     });

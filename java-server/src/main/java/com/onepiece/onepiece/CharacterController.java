@@ -11,7 +11,7 @@ public class CharacterController {
 
     @GetMapping("/character/{name}")
     public Map getCharacter(@PathVariable String name) {
-        String url = "http://localhost:5000/character/" + name;
+        String url = "https://onepiece-api-a07f.onrender.com" + name;
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(url, Map.class);
     }

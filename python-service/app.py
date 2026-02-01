@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 characters = {
     "luffy": {"name": "Monkey D. Luffy", "role": "Captain", "crew": "Straw Hat Pirates"},

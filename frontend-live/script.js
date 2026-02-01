@@ -17,26 +17,30 @@ window.addEventListener("load", revealOnScroll);
 
 // Character search (keep this if you already had search)
 function searchCharacter() {
-  const name = document.getElementById("searchInput").value.trim();
+  const name = document.getElementById("searchInput").value.trim().toLowerCase();
 
-  fetch(`https://YOUR-REAL-API-URL.onrender.com/character/${name}`)
-    .then(res => {
-      if (!res.ok) throw new Error("Not found");
-      return res.json();
-    })
-    .then(data => {
-      document.getElementById("result").innerHTML = `
-        <div class="result-card">
-          <h3>${data.name}</h3>
-          <p>Role: ${data.role}</p>
-          <p>Crew: ${data.crew}</p>
-        </div>
-      `;
-    })
-    .catch(() => {
-      document.getElementById("result").innerHTML = "<p>Character not found</p>";
-    });
+  const characters = {
+    luffy: { name: "Monkey D. Luffy", role: "Captain", crew: "Straw Hat Pirates" },
+    zoro: { name: "Roronoa Zoro", role: "Swordsman", crew: "Straw Hat Pirates" },
+    sanji: { name: "Sanji", role: "Cook", crew: "Straw Hat Pirates" },
+    robin: { name: "Nico Robin", role: "Archaeologist", crew: "Straw Hat Pirates" }
+  };
+
+  const data = characters[name];
+
+  if (data) {
+    document.getElementById("result").innerHTML = `
+      <div class="result-card">
+        <h3>${data.name}</h3>
+        <p>Role: ${data.role}</p>
+        <p>Crew: ${data.crew}</p>
+      </div>
+    `;
+  } else {
+    document.getElementById("result").innerHTML = "<p>Character not found</p>";
+  }
 }
+
 
 const navbar = document.querySelector(".navbar");
 

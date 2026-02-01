@@ -96,3 +96,43 @@ footer {
 .crew-card:hover img {
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
+.wave-divider {
+  height: 120px;
+  background: url("https://svgshare.com/i/15pA.svg") repeat-x;
+  background-size: cover;
+  margin-top: -5px;
+}
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background: #111;
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.close-btn {
+  float: right;
+  cursor: pointer;
+  font-size: 22px;
+}

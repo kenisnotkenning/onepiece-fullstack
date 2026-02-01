@@ -17,7 +17,7 @@ window.addEventListener("load", revealOnScroll);
 
 // Character search (keep this if you already had search)
 function searchCharacter() {
-  const name = document.getElementById("searchInput").value.trim();
+  const name = document.getElementById("searchInput").value.trim().toLowerCase();
 
   fetch(`https://onepiece-api-ken.onrender.com/character/${name}`)
     .then(res => {
@@ -37,6 +37,7 @@ function searchCharacter() {
       document.getElementById("result").innerHTML = "<p>Character not found</p>";
     });
 }
+
 
 
 

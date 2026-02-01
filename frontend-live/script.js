@@ -111,3 +111,30 @@ document.querySelectorAll(".crew-card").forEach(card => {
 function closeModal() {
   document.getElementById("characterModal").style.display = "none";
 }
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+
+function changeSlide() {
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add("active");
+}
+
+setInterval(changeSlide, 4000);
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05), transparent 40%);
+  animation: moveBg 20s linear infinite;
+  z-index: -2;
+}
+
+@keyframes moveBg {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-25%, -25%); }
+}

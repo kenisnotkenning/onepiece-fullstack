@@ -25,7 +25,8 @@ body {
 
 .hero {
   height: 100vh;
-  background: url("images/hero.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url("images/hero.jpg") center/cover fixed no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,4 +87,12 @@ footer {
 .section.visible, .crew-card.visible {
   opacity: 1;
   transform: translateY(0);
+}
+.navbar a:hover {
+  color: #f5c518;
+  text-shadow: 0 0 8px #f5c518;
+}
+
+.crew-card:hover img {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }

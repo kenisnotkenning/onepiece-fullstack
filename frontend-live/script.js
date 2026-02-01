@@ -93,11 +93,18 @@ function animateParticles() {
 
 animateParticles();
 const crewInfo = {
-  "Luffy": "Captain of the Straw Hat Pirates. Dreams of becoming King of the Pirates.",
-  "Zoro": "Master swordsman who wields three swords.",
-  "Sanji": "Cook of the crew who fights with powerful kicks.",
-  "Robin": "Archaeologist who can sprout limbs using Devil Fruit powers."
+  Luffy: "Captain of the Straw Hat Pirates. Ate the Gum-Gum Fruit.",
+  Zoro: "Master swordsman using the Three-Sword Style.",
+  Nami: "Navigator who can predict weather and loves treasure.",
+  Usopp: "Sniper and storyteller with incredible aim.",
+  Sanji: "Chef of the crew who fights with powerful kicks.",
+  Chopper: "Doctor of the crew, a reindeer who ate the Human-Human Fruit.",
+  Robin: "Archaeologist who can sprout limbs using Devil Fruit powers.",
+  Franky: "Shipwright and cyborg who built the Thousand Sunny.",
+  Brook: "Musician and swordsman who came back from the dead.",
+  Jinbe: "Helmsman and master of Fish-Man Karate."
 };
+
 
 document.querySelectorAll(".crew-card").forEach(card => {
   card.addEventListener("click", () => {

@@ -79,7 +79,7 @@ footer {
     font-size: 28px;
   }
 }
-.section, .crew-card {
+/* .section, .crew-card {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
@@ -88,7 +88,7 @@ footer {
 .section.visible, .crew-card.visible {
   opacity: 1;
   transform: translateY(0);
-}
+} */
 .navbar a:hover {
   color: #f5c518;
   text-shadow: 0 0 8px #f5c518;
@@ -179,4 +179,8 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
   padding: 20px;
+}
+.crew-card {
+  position: relative;
+  z-index: 5;
 }

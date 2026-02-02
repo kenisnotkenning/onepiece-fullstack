@@ -145,3 +145,25 @@ body::before {
   from { transform: translate(0, 0); }
   to { transform: translate(-25%, -25%); }
 }
+const data = {
+  Luffy: "Captain of the Straw Hat Pirates. Ate the Gum-Gum Fruit and dreams of becoming Pirate King.",
+  Zoro: "Master swordsman using the Three-Sword Style.",
+  Nami: "Navigator of the crew and expert in weather.",
+  Usopp: "Sniper of the Straw Hats with incredible aim.",
+  Sanji: "Cook of the crew who fights with powerful kicks.",
+  Chopper: "Doctor of the crew, a reindeer who ate the Human-Human Fruit.",
+  Robin: "Archaeologist who can sprout limbs using Devil Fruit powers.",
+  Franky: "Shipwright and cyborg who built the Thousand Sunny.",
+  Brook: "Musician and swordsman who came back from the dead.",
+  Jinbe: "Helmsman and master of Fish-Man Karate."
+};
+
+function showDetails(name) {
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("charName").innerText = name;
+  document.getElementById("charDesc").innerText = data[name];
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}

@@ -175,3 +175,11 @@ function animateParticles() {
 }
 
 animateParticles();
+// ================= PARALLAX HERO BACKGROUND =================
+window.addEventListener("scroll", () => {
+  const hero = document.querySelector(".hero");
+  const scrollY = window.scrollY;
+
+  // Move background slower than scroll
+  hero.style.backgroundPositionY = scrollY * 0.4 + "px";
+});

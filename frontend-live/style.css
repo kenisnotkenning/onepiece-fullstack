@@ -303,5 +303,16 @@ body::before {
   z-index: -3; /* Behind everything */
   pointer-events: none;
 }
+/* ===== SCROLL REVEAL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 

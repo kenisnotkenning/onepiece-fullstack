@@ -1,9 +1,12 @@
-const revealItems = document.querySelectorAll(".section, .crew-card");
+// ================= SCROLL REVEAL =================
+const revealElements = document.querySelectorAll(".reveal");
 
 function revealOnScroll() {
   const windowHeight = window.innerHeight;
-  revealItems.forEach(el => {
+
+  revealElements.forEach(el => {
     const elementTop = el.getBoundingClientRect().top;
+
     if (elementTop < windowHeight - 80) {
       el.classList.add("visible");
     }

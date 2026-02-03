@@ -181,3 +181,22 @@ window.addEventListener("scroll", () => {
   // Move background slower than scroll
   hero.style.backgroundPositionY = scrollY * 0.4 + "px";
 });
+// ===== CLICK SOUND EFFECT =====
+const clickSound = document.getElementById("clickSound");
+
+function playClickSound() {
+  if (!clickSound) return;
+  clickSound.currentTime = 0; // restart sound if clicked fast
+  clickSound.play();
+}
+
+// Play sound when any button is clicked
+document.querySelectorAll("button").forEach(btn => {
+  btn.addEventListener("click", playClickSound);
+});
+
+// Play sound when any crew card is clicked
+document.querySelectorAll(".crew-card").forEach(card => {
+  card.addEventListener("click", playClickSound);
+});
+

@@ -1,4 +1,4 @@
-// ================= REVEAL ON SCROLL =================
+// ================= SCROLL REVEAL =================
 const revealElements = document.querySelectorAll(".section, .crew-card");
 
 function revealOnScroll() {
@@ -15,63 +15,22 @@ window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
 
-// ================= NAVBAR SCROLL EFFECT =================
-const navbar = document.querySelector(".navbar");
+// ================= HERO IMAGE SLIDER =================
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slider .slide");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    navbar.style.background = "rgba(0,0,0,0.95)";
-    navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.6)";
-  } else {
-    navbar.style.background = "rgba(0,0,0,0.8)";
-    navbar.style.boxShadow = "none";
-  }
-});
-
-
-// ================= PARTICLES BACKGROUND =================
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for (let i = 0; i < 80; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 2,
-    dx: (Math.random() - 0.5) * 0.5,
-    dy: (Math.random() - 0.5) * 0.5
-  });
+function changeSlide() {
+  if (slides.length === 0) return;
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add("active");
 }
 
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "rgba(255,255,255,0.5)";
-
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-    ctx.fill();
-
-    p.x += p.dx;
-    p.y += p.dy;
-
-    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-  });
-
-  requestAnimationFrame(animateParticles);
-}
-
-animateParticles();
+setInterval(changeSlide, 4000);
 
 
-// ================= CHARACTER DESCRIPTIONS =================
-const characters = {
+// ================= CREW CHARACTER INFO =================
+const crewInfo = {
   Luffy: "Captain of the Straw Hat Pirates. Dreams of becoming King of the Pirates.",
   Zoro: "Master swordsman who uses three swords.",
   Nami: "Navigator who can predict the weather.",
@@ -85,32 +44,52 @@ const characters = {
 };
 
 
-// ================= CLICK CHARACTER =================
+// ================= SHOW CREW MODAL =================
 function showDetails(name) {
-  alert(name + ": " + characters[name]);
+  document.getElementById("modalName").textContent = name;
+  document.getElementById("modalDesc").textContent = crewInfo[name];
+  document.getElementById("characterModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("characterModal").style.display = "none";
 }
 
 
-// ================= SEARCH CHARACTER =================
+// ================= SEARCH CHARACTER FROM API =================
 function searchCharacter() {
-  const input = document.getElementById("searchInput").value.trim();
-  if (characters[input]) {
-    alert(input + ": " + characters[input]);
+  const name = document.getElementById("searchInput").value.trim().toLowerCase();
+
+  fetch(`https://onepiece-api-ken.onrender.com/character/${name}`)
+    .then(res => {
+      if (!res.ok) throw new Error("Not found");
+      return res.json();
+    })
+    .then(data => {
+      document.getElementById("result").innerHTML = `
+        <div class="result-card">
+          <img src="${data.image}" alt="${data.name}" class="result-img">
+          <h3>${data.name}</h3>
+          <p>Role: ${data.role}</p>
+          <p>Crew: ${data.crew}</p>
+        </div>
+      `;
+    })
+    .catch(() => {
+      document.getElementById("result").innerHTML = "<p>Character not found</p>";
+    });
+}
+
+
+// ================= NAVBAR SCROLL EFFECT =================
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    navbar.style.background = "rgba(0,0,0,0.95)";
+    navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.6)";
   } else {
-    alert("Character not found");
+    navbar.style.background = "rgba(0,0,0,0.8)";
+    navbar.style.boxShadow = "none";
   }
-}
-
-
-// ================= HERO SLIDER =================
-let currentSlide = 0;
-const slides = document.querySelectorAll(".slide");
-
-function changeSlide() {
-  if (slides.length === 0) return;
-  slides[currentSlide].classList.remove("active");
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add("active");
-}
-
-setInterval(changeSlide, 4000);
+});

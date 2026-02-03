@@ -67,7 +67,10 @@ body::before {
   width: 100%;
   height: 100%;
 }
+/* .hero-slider {
+  background-attachment: fixed;
 
+} */
 .slide {
   position: absolute;
   max-width: 85%;
@@ -81,6 +84,7 @@ body::before {
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
+
 
 
 .slide.active {
@@ -142,31 +146,45 @@ body::before {
 }
 
 .crew-card {
-  background: #1c1c1c;
+  background: #121212;
   border-radius: 15px;
   padding: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.1);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
-
-.crew-card:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 0 25px rgba(255, 204, 0, 0.5);
-}
-
 .crew-card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-.crew-card p {
-  margin-top: 12px;
-  font-weight: bold;
-  font-size: 1.1rem;
+.crew-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.7),
+              0 0 45px rgba(255, 120, 0, 0.4);
 }
+
+.crew-card::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.crew-card:hover::after {
+  opacity: 1;
+}
+
 
 /* ===== SEARCH ===== */
 #search input {
@@ -253,14 +271,27 @@ body::before {
     height: 180px;
   }
 }
-/* ===== Scroll Reveal Animation ===== */
-.section, .crew-card {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
+
+.light-mode {
+  background: #f2f2f2;
+  color: #111;
 }
 
-.section.visible, .crew-card.visible {
-  opacity: 1;
-  transform: translateY(0);
+.light-mode .navbar {
+  background: #ffffffcc;
 }
+
+.light-mode .crew-card {
+  background: #ffffff;
+  color: #111;
+}
+#themeToggle {
+  margin-right: 15px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #f5c518;
+  font-weight: bold;
+}
+

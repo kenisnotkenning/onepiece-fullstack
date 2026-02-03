@@ -1,11 +1,10 @@
-// Reveal animation on scroll
-const revealElements = document.querySelectorAll(".section, .crew-card");
+const revealItems = document.querySelectorAll(".section, .crew-card");
 
 function revealOnScroll() {
   const windowHeight = window.innerHeight;
-  revealElements.forEach(el => {
+  revealItems.forEach(el => {
     const elementTop = el.getBoundingClientRect().top;
-    if (elementTop < windowHeight - 100) {
+    if (elementTop < windowHeight - 80) {
       el.classList.add("visible");
     }
   });
@@ -15,30 +14,30 @@ window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
 
-
-// ================= CREW CHARACTER INFO =================
-const crewInfo = {
-  Luffy: "Captain of the Straw Hat Pirates. Dreams of becoming King of the Pirates.",
-  Zoro: "Master swordsman who uses three swords.",
-  Nami: "Navigator who can predict the weather.",
-  Usopp: "Sniper of the crew and master storyteller.",
-  Sanji: "Cook who fights using powerful kicks.",
-  Chopper: "Doctor who can transform using Rumble Balls.",
-  Robin: "Archaeologist who can sprout limbs.",
-  Franky: "Shipwright and cyborg with heavy weapons.",
-  Brook: "Musician and swordsman brought back to life.",
-  Jinbe: "Helmsman and powerful fish-man karate master."
+// ================= SHOW CREW DETAILS MODAL =================
+const characters = {
+  Luffy: { desc: "Captain of the Straw Hat Pirates.", img: "images/luffy.png" },
+  Zoro: { desc: "Master swordsman using three swords.", img: "images/zoro.png" },
+  Nami: { desc: "Navigator who controls the weather.", img: "images/nami.png" },
+  Usopp: { desc: "Sniper and brave warrior.", img: "images/usopp.png" },
+  Sanji: { desc: "Cook who fights with kicks.", img: "images/sanji.png" },
+  Chopper: { desc: "Doctor and reindeer.", img: "images/chopper.png" },
+  Robin: { desc: "Archaeologist of the crew.", img: "images/robin.png" },
+  Franky: { desc: "Cyborg shipwright.", img: "images/franky.png" },
+  Brook: { desc: "Musician skeleton swordsman.", img: "images/brook.png" },
+  Jinbe: { desc: "Helmsman and fish-man karate master.", img: "images/jinbe.png" }
 };
 
-// ================= SHOW CREW DETAILS MODAL =================
 function showDetails(name) {
-  document.getElementById("modalName").textContent = name;
-  document.getElementById("modalDesc").textContent = crewInfo[name];
-  document.getElementById("characterModal").style.display = "block";
+  function closePopup() {
+  document.getElementById("popup").style.display = "none";
 }
 
-function closeModal() {
-  document.getElementById("characterModal").style.display = "none";
+  const data = characters[name];
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("charName").innerText = name;
+  document.getElementById("charDesc").innerText = data.desc;
+  document.getElementById("popupImg").src = data.img;
 }
 
 // ================= SEARCH FUNCTION (BACKEND API) =================
@@ -91,4 +90,16 @@ window.addEventListener("scroll", () => {
     navbar.style.background = "rgba(0,0,0,0.8)";
     navbar.style.boxShadow = "none";
   }
+});
+window.addEventListener("scroll", () => {
+  const hero = document.querySelector(".hero");
+  const scrollY = window.scrollY;
+  hero.style.backgroundPositionY = scrollY * 0.3 + "px";
+});
+
+const themeBtn = document.getElementById("themeToggle");
+
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+  themeBtn.textContent = document.body.classList.contains("light-mode") ? "🌞" : "🌙";
 });

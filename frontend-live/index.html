@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>One Piece World</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images/luffy.png">
+
 </head>
 
 <body>
@@ -13,6 +15,8 @@
   <header class="navbar">
     <div class="logo">ONE PIECE</div>
     <nav>
+      <button id="themeToggle">🌙</button>
+
       <a href="#about">About</a>
       <a href="#crew">Crew</a>
       <a href="#search">Search</a>
@@ -89,6 +93,16 @@
       <p id="modalDesc"></p>
     </div>
   </div>
+
+  <!-- CHARACTER POPUP (WITH IMAGE) -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">✖</span>
+    <img id="popupImg" style="width:150px; border-radius:10px; margin-bottom:10px;">
+    <h2 id="charName"></h2>
+    <p id="charDesc"></p>
+  </div>
+</div>
 
   <script src="script.js"></script>
 </body>

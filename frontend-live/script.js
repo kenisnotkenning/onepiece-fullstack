@@ -249,17 +249,21 @@ window.addEventListener("scroll", () => {
     }
   });
 });
-// ===== MOBILE MENU TOGGLE =====
+// ===== MOBILE NAVBAR TOGGLE =====
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 
 if (menuToggle && navMenu) {
   menuToggle.addEventListener("click", () => {
-    if (navMenu.style.display === "flex") {
-      navMenu.style.display = "none";
-    } else {
-      navMenu.style.display = "flex";
-    }
+    navMenu.classList.toggle("active");
+  });
+
+  // Auto-close menu when a link is clicked (mobile UX improvement)
+  document.querySelectorAll("#navMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+    });
   });
 }
+
 

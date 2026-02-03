@@ -92,18 +92,18 @@ function animateParticles() {
 }
 
 animateParticles();
-const crewInfo = {
-  Luffy: "Captain of the Straw Hat Pirates. Ate the Gum-Gum Fruit.",
-  Zoro: "Master swordsman using the Three-Sword Style.",
-  Nami: "Navigator who can predict weather and loves treasure.",
-  Usopp: "Sniper and storyteller with incredible aim.",
-  Sanji: "Chef of the crew who fights with powerful kicks.",
-  Chopper: "Doctor of the crew, a reindeer who ate the Human-Human Fruit.",
-  Robin: "Archaeologist who can sprout limbs using Devil Fruit powers.",
-  Franky: "Shipwright and cyborg who built the Thousand Sunny.",
-  Brook: "Musician and swordsman who came back from the dead.",
-  Jinbe: "Helmsman and master of Fish-Man Karate."
-};
+// const crewInfo = {
+//   Luffy: "Captain of the Straw Hat Pirates. Ate the Gum-Gum Fruit.",
+//   Zoro: "Master swordsman using the Three-Sword Style.",
+//   Nami: "Navigator who can predict weather and loves treasure.",
+//   Usopp: "Sniper and storyteller with incredible aim.",
+//   Sanji: "Chef of the crew who fights with powerful kicks.",
+//   Chopper: "Doctor of the crew, a reindeer who ate the Human-Human Fruit.",
+//   Robin: "Archaeologist who can sprout limbs using Devil Fruit powers.",
+//   Franky: "Shipwright and cyborg who built the Thousand Sunny.",
+//   Brook: "Musician and swordsman who came back from the dead.",
+//   Jinbe: "Helmsman and master of Fish-Man Karate."
+// };
 
 
 document.querySelectorAll(".crew-card").forEach(card => {
@@ -145,18 +145,32 @@ body::before {
   from { transform: translate(0, 0); }
   to { transform: translate(-25%, -25%); }
 }
-const data = {
-  Luffy: "Captain of the Straw Hat Pirates. Ate the Gum-Gum Fruit and dreams of becoming Pirate King.",
-  Zoro: "Master swordsman using the Three-Sword Style.",
-  Nami: "Navigator of the crew and expert in weather.",
-  Usopp: "Sniper of the Straw Hats with incredible aim.",
-  Sanji: "Cook of the crew who fights with powerful kicks.",
-  Chopper: "Doctor of the crew, a reindeer who ate the Human-Human Fruit.",
-  Robin: "Archaeologist who can sprout limbs using Devil Fruit powers.",
-  Franky: "Shipwright and cyborg who built the Thousand Sunny.",
-  Brook: "Musician and swordsman who came back from the dead.",
-  Jinbe: "Helmsman and master of Fish-Man Karate."
+const characters = {
+  Luffy: "Captain of the Straw Hat Pirates. Dreams of becoming King of the Pirates.",
+  Zoro: "Master swordsman who uses three swords.",
+  Nami: "Navigator who can predict the weather.",
+  Usopp: "Sniper of the crew and master storyteller.",
+  Sanji: "Cook who fights using powerful kicks.",
+  Chopper: "Doctor who can transform using Rumble Balls.",
+  Robin: "Archaeologist who can sprout limbs.",
+  Franky: "Shipwright and cyborg with heavy weapons.",
+  Brook: "Musician and swordsman brought back to life.",
+  Jinbe: "Helmsman and powerful fish-man karate master."
 };
+
+function showDetails(name) {
+  alert(name + ": " + characters[name]);
+}
+
+function searchCharacter() {
+  const input = document.getElementById("searchInput").value;
+  if (characters[input]) {
+    alert(input + ": " + characters[input]);
+  } else {
+    alert("Character not found");
+  }
+}
+
 
 function showDetails(name) {
   document.getElementById("popup").style.display = "flex";

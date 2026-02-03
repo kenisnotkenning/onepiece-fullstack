@@ -1,34 +1,3 @@
-// ================= SCROLL REVEAL =================
-const revealElements = document.querySelectorAll(".section, .crew-card");
-
-function revealOnScroll() {
-  const windowHeight = window.innerHeight;
-  revealElements.forEach(el => {
-    const elementTop = el.getBoundingClientRect().top;
-    if (elementTop < windowHeight - 100) {
-      el.classList.add("visible");
-    }
-  });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
-
-
-// ================= HERO IMAGE SLIDER =================
-let currentSlide = 0;
-const slides = document.querySelectorAll(".slider .slide");
-
-function changeSlide() {
-  if (slides.length === 0) return;
-  slides[currentSlide].classList.remove("active");
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add("active");
-}
-
-setInterval(changeSlide, 4000);
-
-
 // ================= CREW CHARACTER INFO =================
 const crewInfo = {
   Luffy: "Captain of the Straw Hat Pirates. Dreams of becoming King of the Pirates.",
@@ -43,8 +12,7 @@ const crewInfo = {
   Jinbe: "Helmsman and powerful fish-man karate master."
 };
 
-
-// ================= SHOW CREW MODAL =================
+// ================= SHOW CREW DETAILS MODAL =================
 function showDetails(name) {
   document.getElementById("modalName").textContent = name;
   document.getElementById("modalDesc").textContent = crewInfo[name];
@@ -55,8 +23,7 @@ function closeModal() {
   document.getElementById("characterModal").style.display = "none";
 }
 
-
-// ================= SEARCH CHARACTER FROM API =================
+// ================= SEARCH FUNCTION (BACKEND API) =================
 function searchCharacter() {
   const name = document.getElementById("searchInput").value.trim().toLowerCase();
 
@@ -80,6 +47,34 @@ function searchCharacter() {
     });
 }
 
+// ================= HERO IMAGE SLIDER =================
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+
+function changeSlide() {
+  if (slides.length === 0) return;
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add("active");
+}
+
+setInterval(changeSlide, 4000);
+
+// ================= SCROLL REVEAL ANIMATION =================
+const revealElements = document.querySelectorAll(".section, .crew-card");
+
+function revealOnScroll() {
+  const windowHeight = window.innerHeight;
+  revealElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    if (elementTop < windowHeight - 100) {
+      el.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
 
 // ================= NAVBAR SCROLL EFFECT =================
 const navbar = document.querySelector(".navbar");

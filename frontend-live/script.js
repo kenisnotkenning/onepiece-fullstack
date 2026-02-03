@@ -19,34 +19,32 @@ window.addEventListener("load", revealOnScroll);
 
 // ================= SHOW CREW DETAILS MODAL =================
 const characters = {
-  Luffy: { desc: "Captain of the Straw Hat Pirates.", img: "images/luffy.png" },
-  Zoro: { desc: "Master swordsman using three swords.", img: "images/zoro.png" },
-  Nami: { desc: "Navigator who controls the weather.", img: "images/nami.png" },
-  Usopp: { desc: "Sniper and brave warrior.", img: "images/usopp.png" },
-  Sanji: { desc: "Cook who fights with kicks.", img: "images/sanji.png" },
-  Chopper: { desc: "Doctor and reindeer.", img: "images/chopper.png" },
-  Robin: { desc: "Archaeologist of the crew.", img: "images/robin.png" },
-  Franky: { desc: "Cyborg shipwright.", img: "images/franky.png" },
-  Brook: { desc: "Musician skeleton swordsman.", img: "images/brook.png" },
-  Jinbe: { desc: "Helmsman and fish-man karate master.", img: "images/jinbe.png" }
+  Luffy: { desc: "Captain of the Straw Hat Pirates.", img: "images/luffy.png", str: 95, spd: 90, def: 85 },
+  Zoro: { desc: "Master swordsman using three swords.", img: "images/zoro.png", str: 98, spd: 85, def: 90 },
+  Nami: { desc: "Navigator who controls the weather.", img: "images/nami.png", str: 60, spd: 80, def: 65 },
+  Usopp: { desc: "Sniper and brave warrior.", img: "images/usopp.png", str: 55, spd: 75, def: 60 },
+  Sanji: { desc: "Cook who fights with kicks.", img: "images/sanji.png", str: 90, spd: 92, def: 80 },
+  Chopper: { desc: "Doctor and reindeer.", img: "images/chopper.png", str: 70, spd: 65, def: 75 },
+  Robin: { desc: "Archaeologist of the crew.", img: "images/robin.png", str: 65, spd: 70, def: 60 },
+  Franky: { desc: "Cyborg shipwright.", img: "images/franky.png", str: 88, spd: 60, def: 95 },
+  Brook: { desc: "Musician skeleton swordsman.", img: "images/brook.png", str: 75, spd: 88, def: 70 },
+  Jinbe: { desc: "Helmsman and fish-man karate master.", img: "images/jinbe.png", str: 92, spd: 70, def: 98 }
 };
 
 function showDetails(name) {
-  function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-
   const data = characters[name];
+
   document.getElementById("popup").style.display = "flex";
   document.getElementById("charName").innerText = name;
   document.getElementById("charDesc").innerText = data.desc;
   document.getElementById("popupImg").src = data.img;
 
-  function closePopup() {
-  document.getElementById("popup").style.display = "none";
+  // Animate stats bars
+  document.getElementById("statStrength").style.width = data.str + "%";
+  document.getElementById("statSpeed").style.width = data.spd + "%";
+  document.getElementById("statDefense").style.width = data.def + "%";
 }
 
-}
 
 // ================= SEARCH FUNCTION (BACKEND API) =================
 function searchCharacter() {

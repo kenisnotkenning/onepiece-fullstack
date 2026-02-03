@@ -338,5 +338,28 @@ button:hover {
 button {
   animation: pulseGlow 2.5s infinite ease-in-out;
 }
+/* ===== CHARACTER STATS BARS ===== */
+.stats {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.stat {
+  margin-bottom: 8px;
+}
+
+.bar {
+  background: #333;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.bar div {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #f5c518, #ff7b00);
+  transition: width 0.8s ease;
+}
 
 

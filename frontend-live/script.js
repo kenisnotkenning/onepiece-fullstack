@@ -199,4 +199,18 @@ document.querySelectorAll("button").forEach(btn => {
 document.querySelectorAll(".crew-card").forEach(card => {
   card.addEventListener("click", playClickSound);
 });
+// ===== CUSTOM CURSOR MOVEMENT =====
+const cursorDot = document.querySelector(".cursor-dot");
+const cursorGlow = document.querySelector(".cursor-glow");
+
+window.addEventListener("mousemove", (e) => {
+  const x = e.clientX;
+  const y = e.clientY;
+
+  cursorDot.style.left = x + "px";
+  cursorDot.style.top = y + "px";
+
+  cursorGlow.style.left = x + "px";
+  cursorGlow.style.top = y + "px";
+});
 

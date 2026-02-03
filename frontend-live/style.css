@@ -401,5 +401,31 @@ button {
   transform: translateY(-8px);
   box-shadow: 0 0 25px rgba(255, 204, 0, 0.6);
 }
+/* ===== CUSTOM GLOW CURSOR ===== */
+.cursor-dot,
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #f5c518;
+}
+
+.cursor-glow {
+  width: 35px;
+  height: 35px;
+  background: rgba(245, 197, 24, 0.2);
+  box-shadow: 0 0 20px rgba(245, 197, 24, 0.8),
+              0 0 40px rgba(255, 120, 0, 0.5);
+  transition: transform 0.1s ease-out;
+}
 
 

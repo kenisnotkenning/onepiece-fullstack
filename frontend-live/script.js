@@ -38,6 +38,11 @@ function showDetails(name) {
   document.getElementById("charName").innerText = name;
   document.getElementById("charDesc").innerText = data.desc;
   document.getElementById("popupImg").src = data.img;
+
+  function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
 }
 
 // ================= SEARCH FUNCTION (BACKEND API) =================

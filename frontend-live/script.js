@@ -1,11 +1,10 @@
-// Reveal animation on scroll
+// ================= REVEAL ON SCROLL =================
 const revealElements = document.querySelectorAll(".section, .crew-card");
 
 function revealOnScroll() {
   const windowHeight = window.innerHeight;
   revealElements.forEach(el => {
     const elementTop = el.getBoundingClientRect().top;
-
     if (elementTop < windowHeight - 100) {
       el.classList.add("visible");
     }
@@ -15,34 +14,8 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
-// Character search (keep this if you already had search)
-function searchCharacter() {
-  const name = document.getElementById("searchInput").value.trim().toLowerCase();
 
-  fetch(`https://onepiece-api-ken.onrender.com/character/${name}`)
-    .then(res => {
-      if (!res.ok) throw new Error("Not found");
-      return res.json();
-    })
-    .then(data => {
-  document.getElementById("result").innerHTML = `
-    <div class="result-card">
-      <img src="${data.image}" alt="${data.name}" class="result-img">
-      <h3>${data.name}</h3>
-      <p>Role: ${data.role}</p>
-      <p>Crew: ${data.crew}</p>
-    </div>
-  `;
-})
-
-    .catch(() => {
-      document.getElementById("result").innerHTML = "<p>Character not found</p>";
-    });
-}
-
-
-
-
+// ================= NAVBAR SCROLL EFFECT =================
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
@@ -54,6 +27,9 @@ window.addEventListener("scroll", () => {
     navbar.style.boxShadow = "none";
   }
 });
+
+
+// ================= PARTICLES BACKGROUND =================
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
@@ -92,60 +68,9 @@ function animateParticles() {
 }
 
 animateParticles();
-// const crewInfo = {
-//   Luffy: "Captain of the Straw Hat Pirates. Ate the Gum-Gum Fruit.",
-//   Zoro: "Master swordsman using the Three-Sword Style.",
-//   Nami: "Navigator who can predict weather and loves treasure.",
-//   Usopp: "Sniper and storyteller with incredible aim.",
-//   Sanji: "Chef of the crew who fights with powerful kicks.",
-//   Chopper: "Doctor of the crew, a reindeer who ate the Human-Human Fruit.",
-//   Robin: "Archaeologist who can sprout limbs using Devil Fruit powers.",
-//   Franky: "Shipwright and cyborg who built the Thousand Sunny.",
-//   Brook: "Musician and swordsman who came back from the dead.",
-//   Jinbe: "Helmsman and master of Fish-Man Karate."
-// };
 
 
-document.querySelectorAll(".crew-card").forEach(card => {
-  card.addEventListener("click", () => {
-    const name = card.querySelector("p").textContent.trim();
-    document.getElementById("modalName").textContent = name;
-    document.getElementById("modalDesc").textContent = crewInfo[name] || "Straw Hat Pirate";
-    document.getElementById("characterModal").style.display = "block";
-  });
-});
-
-function closeModal() {
-  document.getElementById("characterModal").style.display = "none";
-}
-let currentSlide = 0;
-const slides = document.querySelectorAll(".slide");
-
-function changeSlide() {
-  slides[currentSlide].classList.remove("active");
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add("active");
-}
-
-setInterval(changeSlide, 4000);
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 40%),
-              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05), transparent 40%);
-  animation: moveBg 20s linear infinite;
-  z-index: -2;
-}
-
-@keyframes moveBg {
-  from { transform: translate(0, 0); }
-  to { transform: translate(-25%, -25%); }
-}
-// Character descriptions
+// ================= CHARACTER DESCRIPTIONS =================
 const characters = {
   Luffy: "Captain of the Straw Hat Pirates. Dreams of becoming King of the Pirates.",
   Zoro: "Master swordsman who uses three swords.",
@@ -159,12 +84,14 @@ const characters = {
   Jinbe: "Helmsman and powerful fish-man karate master."
 };
 
-// Show character details
+
+// ================= CLICK CHARACTER =================
 function showDetails(name) {
   alert(name + ": " + characters[name]);
 }
 
-// Search function
+
+// ================= SEARCH CHARACTER =================
 function searchCharacter() {
   const input = document.getElementById("searchInput").value.trim();
   if (characters[input]) {
@@ -175,13 +102,15 @@ function searchCharacter() {
 }
 
 
+// ================= HERO SLIDER =================
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
 
-function showDetails(name) {
-  document.getElementById("popup").style.display = "flex";
-  document.getElementById("charName").innerText = name;
-  document.getElementById("charDesc").innerText = data[name];
+function changeSlide() {
+  if (slides.length === 0) return;
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add("active");
 }
 
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
+setInterval(changeSlide, 4000);

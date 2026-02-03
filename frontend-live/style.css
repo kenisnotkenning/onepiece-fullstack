@@ -289,13 +289,8 @@ body::before {
 }
 #themeToggle {
   margin-right: 15px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  background: #f5c518;
-  font-weight: bold;
 }
+
 #particles {
   position: fixed;
   top: 0;
@@ -315,6 +310,33 @@ body::before {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+/* ===== GLOWING BUTTON STYLE ===== */
+button {
+  background: linear-gradient(45deg, #f5c518, #ff7b00);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 150, 0, 0.5);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255, 150, 0, 0.9),
+              0 0 40px rgba(255, 100, 0, 0.6);
+}
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px rgba(255,150,0,0.4); }
+  50% { box-shadow: 0 0 25px rgba(255,150,0,0.9); }
+  100% { box-shadow: 0 0 10px rgba(255,150,0,0.4); }
+}
+
+button {
+  animation: pulseGlow 2.5s infinite ease-in-out;
 }
 
 

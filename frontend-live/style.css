@@ -252,3 +252,25 @@ body::before {
 
   .hero-text h1 { font-size: 1.8rem; }
 }
+/* ===== NAVBAR STRUCTURE FIX ===== */
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+#navMenu {
+  display: flex;
+}
+
+/* Prevent layout breaking */
+.navbar * {
+  box-sizing: border-box;
+}
+
+/* Mobile menu hidden by default */
+@media (max-width: 768px) {
+  #navMenu {
+    display: none;
+  }
+}

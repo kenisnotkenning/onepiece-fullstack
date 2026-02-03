@@ -50,14 +50,16 @@ body::before {
 }
 
 /* ===== HERO SLIDER ===== */
+/* ===== HERO SLIDER ===== */
 .hero {
   position: relative;
   height: 100vh;
+  width: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  background: black;
 }
 
 .slider {
@@ -66,25 +68,51 @@ body::before {
   height: 100%;
 }
 
-.slider .slide {
+.slide {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 90%;
+  max-height: 90%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
 
-.slider .slide.active {
+.slide.active {
   opacity: 1;
 }
 
-.hero h1 {
+/* Dark overlay */
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+/* Text on top */
+.hero-text {
   position: relative;
   z-index: 2;
-  font-size: 3rem;
-  text-shadow: 0 0 20px black;
+  text-align: center;
+  color: white;
 }
+
+.hero-text h1 {
+  font-size: 3rem;
+}
+
+.hero-text p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
 
 /* ===== SECTIONS ===== */
 .section {

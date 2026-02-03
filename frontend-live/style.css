@@ -146,14 +146,15 @@ body::before {
 }
 
 .crew-card {
-  background: #121212;
+  background: linear-gradient(145deg, #111, #1b1b1b);
   border-radius: 15px;
   padding: 15px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 0 10px rgba(255, 204, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
   cursor: pointer;
   position: relative;
-  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 .crew-card img {
   width: 100%;
@@ -164,9 +165,8 @@ body::before {
 }
 
 .crew-card:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 0 25px rgba(255, 204, 0, 0.7),
-              0 0 45px rgba(255, 120, 0, 0.4);
+  box-shadow: 0 0 30px rgba(255, 204, 0, 0.8),
+              0 0 60px rgba(255, 120, 0, 0.4);
 }
 
 .crew-card::after {

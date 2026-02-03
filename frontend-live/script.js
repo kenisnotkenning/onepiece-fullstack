@@ -213,4 +213,40 @@ window.addEventListener("mousemove", (e) => {
   cursorGlow.style.left = x + "px";
   cursorGlow.style.top = y + "px";
 });
+// ===== LOADING SCREEN CONTROL =====
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    loader.style.transition = "opacity 0.8s ease";
+
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 800);
+  }, 2500); // matches loading bar animation time
+});
+// ===== ACTIVE NAVBAR HIGHLIGHT =====
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+  let currentSection = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    const sectionHeight = section.offsetHeight;
+
+    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+      currentSection = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(currentSection)) {
+      link.classList.add("active");
+    }
+  });
+});
 

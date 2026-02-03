@@ -145,6 +145,7 @@ body::before {
   from { transform: translate(0, 0); }
   to { transform: translate(-25%, -25%); }
 }
+// Character descriptions
 const characters = {
   Luffy: "Captain of the Straw Hat Pirates. Dreams of becoming King of the Pirates.",
   Zoro: "Master swordsman who uses three swords.",
@@ -158,18 +159,21 @@ const characters = {
   Jinbe: "Helmsman and powerful fish-man karate master."
 };
 
+// Show character details
 function showDetails(name) {
   alert(name + ": " + characters[name]);
 }
 
+// Search function
 function searchCharacter() {
-  const input = document.getElementById("searchInput").value;
+  const input = document.getElementById("searchInput").value.trim();
   if (characters[input]) {
     alert(input + ": " + characters[input]);
   } else {
     alert("Character not found");
   }
 }
+
 
 
 function showDetails(name) {

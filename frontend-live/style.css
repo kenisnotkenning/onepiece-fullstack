@@ -70,8 +70,8 @@ body::before {
 
 .slide {
   position: absolute;
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 85%;
+  max-height: 85%;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -81,6 +81,7 @@ body::before {
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
+
 
 .slide.active {
   opacity: 1;
@@ -251,4 +252,15 @@ body::before {
   .crew-card img {
     height: 180px;
   }
+}
+/* ===== Scroll Reveal Animation ===== */
+.section, .crew-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.section.visible, .crew-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

@@ -1,3 +1,21 @@
+// Reveal animation on scroll
+const revealElements = document.querySelectorAll(".section, .crew-card");
+
+function revealOnScroll() {
+  const windowHeight = window.innerHeight;
+  revealElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    if (elementTop < windowHeight - 100) {
+      el.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+
+
 // ================= CREW CHARACTER INFO =================
 const crewInfo = {
   Luffy: "Captain of the Straw Hat Pirates. Dreams of becoming King of the Pirates.",

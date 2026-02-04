@@ -86,17 +86,22 @@ setInterval(changeSlide, 4000);
 // ================= SCROLL REVEAL ANIMATION =================
 
 // ================= NAVBAR SCROLL EFFECT =================
+// ===== GLASS NAVBAR SCROLL BEHAVIOR =====
+let lastScroll = 0;
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    navbar.style.background = "rgba(0,0,0,0.95)";
-    navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.6)";
+  const currentScroll = window.scrollY;
+
+  if (currentScroll > lastScroll && currentScroll > 80) {
+    navbar.style.transform = "translateY(-100%)"; // hide when scrolling down
   } else {
-    navbar.style.background = "rgba(0,0,0,0.8)";
-    navbar.style.boxShadow = "none";
+    navbar.style.transform = "translateY(0)"; // show when scrolling up
   }
+
+  lastScroll = currentScroll;
 });
+
 window.addEventListener("scroll", () => {
   const hero = document.querySelector(".hero");
   const scrollY = window.scrollY;
@@ -265,5 +270,36 @@ if (menuToggle && navMenu) {
     });
   });
 }
+// ===== STAGGERED EPISODE REVEAL =====
+const episodeCards = document.querySelectorAll(".episode-card");
 
+function revealEpisodes() {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  episodeCards.forEach((card, index) => {
+    const cardTop = card.getBoundingClientRect().top;
+
+    if (cardTop < triggerBottom) {
+      setTimeout(() => {
+        card.classList.add("show");
+      }, index * 120); // delay between each card
+    }
+  });
+}
+
+window.addEventListener("scroll", revealEpisodes);
+window.addEventListener("load", revealEpisodes);
+
+// ===== PARALLAX DEPTH EFFECT =====
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+
+  // HERO background moves slow
+  const hero = document.querySelector(".hero");
+  hero.style.backgroundPositionY = scrollY * 0.3 + "px";
+
+  // PARTICLES move medium
+  const particlesLayer = document.getElementById("particles");
+  particlesLayer.style.transform = `translateY(${scrollY * 0.15}px)`;
+});
 
